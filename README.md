@@ -21,15 +21,25 @@ This script automates the setup of monitoring for **system services** and **Dock
 
 1. open shell
 2. create a new file which include the script
+   - run as root: nano setup_monitor.sh
   a. run as root: nano setup_monitor.sh
   b. run as user: sudo nano setup_monitor.sh
-3. paste the code from the github file "setup_monitor.sh" and save the file using CTRL + X and Y
-4. make the new file executable
+4. paste the code from the github file "setup_monitor.sh" and save the file using CTRL + X and Y
+5. make the new file executable
   - a. run as root: chmod +x setup_monitor.sh
   - b. run as user: sudo chmod +x setup_monitor.sh
 5. run the script: ./setup_monitor.sh
 
-
+1. Learn Basics
+   1. HTML
+   2. CSS
+   7. Javascript
+2. Learn One Framework
+   - React 
+     - Router
+     - Redux
+   * Vue
+   + Svelte
   
 ```bash
 ./setup_monitor.sh
