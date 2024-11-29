@@ -20,9 +20,17 @@ This script automates the setup of monitoring for **system services** and **Dock
 ## Setup & Usage
 
 1. open shell
-2. 
-  a. run as root: nano setup_monitor.sh
-  b. run as user: sudo nano setup_monitor.sh
+2. create a new file which include the script
+  - a. run as root: nano setup_monitor.sh
+  - b. run as user: sudo nano setup_monitor.sh
+3. paste the code from the github file "setup_monitor.sh" and save the file using CTRL + X and Y
+4. make the new file executable
+  - a. run as root: chmod +x setup_monitor.sh
+  - b. run as user: sudo chmod +x setup_monitor.sh
+5. run the script: ./setup_monitor.sh
+
+
+  
 ```bash
 ./setup_monitor.sh
 ```
@@ -31,4 +39,3 @@ Run the script and follow the prompts to set up monitoring for a system service 
 
 ```bash
 ./setup_monitor.sh
-
