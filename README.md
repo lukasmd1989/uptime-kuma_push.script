@@ -19,6 +19,10 @@ This script automates the setup of monitoring for **system services** and **Dock
 
 ## Setup & Usage
 
+1. open shell 
+```bash
+./setup_monitor.sh
+
 Run the script and follow the prompts to set up monitoring for a system service or a Docker container.
 
 ```bash
