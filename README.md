@@ -1,44 +1,26 @@
 # uptime-kuma_push.script
 
+# Service and Docker Container Monitoring Setup Script for Uptime Kuma
 
-Instructions
-Create the Combined Automation Script
+This script automates the setup of monitoring for **system services** and **Docker containers** using [Uptime Kuma](https://github.com/louislam/uptime-kuma). It creates monitoring scripts and configures cron jobs to regularly check the status of specified services or containers and sends push notifications to Uptime Kuma.
 
-bash
-Code kopieren
-nano setup_monitor.sh
-Paste the script above into the file.
-Save and exit (Ctrl+X, then Y, then Enter).
-Make the Script Executable
+## Prerequisites
 
-bash
-Code kopieren
-chmod +x setup_monitor.sh
-Run the Automation Script
+- **Uptime Kuma**: Set up and running. Obtain Push IDs for the services or containers you want to monitor.
+- **Permissions**:
+  - The script should be run with appropriate permissions (root or a user with sudo privileges).
+  - For Docker container monitoring, ensure the user has permission to execute Docker commands.
+- **Dependencies**:
+  - `bash`
+  - `systemctl` (for service monitoring)
+  - `docker` (for Docker container monitoring)
+  - `cron`
+  - `curl`
 
-bash
-Code kopieren
+## Usage
+
+Run the script and follow the prompts to set up monitoring for a system service or a Docker container.
+
+```bash
 ./setup_monitor.sh
-Follow the Prompts
 
-What do you want to monitor?
-
-Type 1 for System Service.
-Type 2 for Docker Container.
-If you choose 1 (System Service):
-
-Enter the name of the service you want to monitor:
-For example: sonarr, plexmediaserver, etc.
-Enter the Push ID from Uptime Kuma for this service:
-Paste the Push ID obtained from Uptime Kuma.
-If you choose 2 (Docker Container):
-
-Enter the name of the Docker container you want to monitor:
-For example: my_docker_container.
-Enter the Push ID from Uptime Kuma for this Docker container:
-Paste the Push ID obtained from Uptime Kuma.
-The script will:
-
-Validate the service or container name.
-Create a monitoring script at /usr/local/bin/check_<name>.sh.
-Add a cron job to run the monitoring script every 5 minutes.
