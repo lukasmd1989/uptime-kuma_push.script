@@ -19,7 +19,10 @@ This script automates the setup of monitoring for **system services** and **Dock
 
 ## Setup & Usage
 
-1. open shell 
+1. open shell
+2. 
+  a. run as root: nano setup_monitor.sh
+  b. run as user: sudo nano setup_monitor.sh
 ```bash
 ./setup_monitor.sh
 ```
