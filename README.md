@@ -21,8 +21,10 @@ This script automates the setup of monitoring for **system services** and **Dock
 
 1. open shell
 2. create a new file which include the script
-   - run as root: ```bash nano setup_monitor.sh```
-   - run as user: ```bash sudo nano setup_monitor.sh```
+   - run as root: ```bash
+     nano setup_monitor.sh```
+   - run as user: ```bash
+     sudo nano setup_monitor.sh```
 4. paste the code from the github file "setup_monitor.sh" and save the file using CTRL + X and Y
 5. make the new file executable
   - a. run as root: chmod +x setup_monitor.sh
