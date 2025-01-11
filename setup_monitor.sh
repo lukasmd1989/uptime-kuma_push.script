@@ -30,9 +30,9 @@ create_service_monitor() {
     cat <<EOF > $MONITOR_SCRIPT
 #!/bin/bash
 if systemctl is-active --quiet $SERVICE_NAME; then
-    curl -s "https://your-uptime-kuma-server/api/push/$PUSH_ID?status=up" > /dev/null
+    curl -s "https://$SERVER_ADDRESS/api/push/$PUSH_ID?status=up" > /dev/null
 else
-    curl -s "https://your-uptime-kuma-server/api/push/$PUSH_ID?status=down" > /dev/null
+    curl -s "https://$SERVER_ADDRESS/api/push/$PUSH_ID?status=down" > /dev/null
 fi
 EOF
 
@@ -43,6 +43,11 @@ EOF
     # Add a cron job to run the script every 5 minutes
     (crontab -l 2>/dev/null; echo "*/5 * * * * $MONITOR_SCRIPT") | crontab -
     echo "Added cron job to run the monitoring script every 5 minutes."
+
+    # Run the monitoring script immediately
+    echo "Running the monitoring script immediately for an initial status check..."
+    $MONITOR_SCRIPT
+    echo "Initial status check completed."
 
     echo "Setup complete. Monitoring is now configured."
 }
@@ -65,9 +70,9 @@ create_docker_monitor() {
         cat <<EOF > $MONITOR_SCRIPT
 #!/bin/bash
 if docker ps --format '{{.Names}}' | grep -q "^${CONTAINER_NAME}$"; then
-    curl -s "https://your-uptime-kuma-server/api/push/$PUSH_ID?status=up" > /dev/null
+    curl -s "https://$SERVER_ADDRESS/api/push/$PUSH_ID?status=up" > /dev/null
 else
-    curl -s "https://your-uptime-kuma-server/api/push/$PUSH_ID?status=down" > /dev/null
+    curl -s "https://$SERVER_ADDRESS/api/push/$PUSH_ID?status=down" > /dev/null
 fi
 EOF
 
@@ -79,6 +84,11 @@ EOF
         (crontab -l 2>/dev/null; echo "*/5 * * * * $MONITOR_SCRIPT") | crontab -
         echo "Added cron job to run the monitoring script every 5 minutes."
 
+        # Run the monitoring script immediately
+        echo "Running the monitoring script immediately for an initial status check..."
+        $MONITOR_SCRIPT
+        echo "Initial status check completed."
+
         echo "Setup complete. Monitoring is now configured."
     else
         echo "Docker container '$CONTAINER_NAME' not found. Please check the container name and try again."
@@ -86,6 +96,9 @@ EOF
 }
 
 # Main script logic
+echo "Enter the address of your Uptime Kuma server (e.g., uptime.example.com):"
+read SERVER_ADDRESS
+
 echo "What do you want to monitor?"
 echo "1) System Service"
 echo "2) Docker Container"
